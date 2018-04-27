@@ -853,11 +853,26 @@ class Hamburger {
         } else {
             this.TOPPING_SPICE = topping;
         }
+    }
 
+    removeTopping(remToping) {
+        if (this.remToping) {
+            this.remToping = 0
+        }
+    }
+
+    getSize() {
+        return this.size
     }
 
     calculateCalories() {
-        return this.size + this.stufing + this.topping
+        let totalCalories = 0;
+
+        for(key in this) {
+            totalCalories += this[key];
+
+        }
+        return totalCalories
     }
 
 
@@ -866,8 +881,11 @@ class Hamburger {
 let humberger = new Hamburger(humburgerConst.SIZE_LARGE, humburgerConst.STUFFING_CHEESE);
 humberger.addTopping(humburgerConst.TOPPING_MAYO);
 humberger.addTopping(humburgerConst.TOPPING_SPICE);
-console.log("Calories: " + humberger.calculateCalories());
+humberger.removeTopping(TOPPING_SPICE);
+
 console.log(humberger);
+console.log("Calories: " + humberger.calculateCalories());
+console.log("Size: " + humberger.getSize());
 
 
 
